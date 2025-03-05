@@ -8,9 +8,8 @@ A Flutter application following Clean Architecture principles to interact with S
 - [Architecture](#architecture)
 - [Features](#features)
 - [Installation](#installation)
-- [Dependencies](#dependencies)
-- [Folder Structure](#folder-structure)
-- [License](#license)
+- [Technical Choices](#technical-choices)
+- [Assumptions and Trade-offs](#assumptions-and-trade-offs)
 
 ## Introduction
 
@@ -22,9 +21,6 @@ This project follows Clean Architecture principles:
 - **Presentation Layer:** Handles UI and user interactions using Flutter widgets and `bloc` for state management.
 - **Domain Layer:** Contains business logic, use cases, and entity definitions.
 - **Data Layer:** Manages API calls, local storage, and repository implementations.
-
-### Dependency Injection
-
 
 ## Features
 
@@ -51,27 +47,18 @@ This project follows Clean Architecture principles:
    flutter run
    ```
 
+## Technical Choices
 
-## Folder Structure
+- **Clean Architecture:** Used to maintain separation of concerns, making the app scalable and testable.
+- **Bloc for State Management:** Chosen for predictable state handling and separation of UI from business logic.
+- **Dependency Injection with get_it:** Allows easy injection of dependencies, improving testability.
+- **Dartz for Functional Programming:** Helps in handling failures and ensuring code robustness.
+- **Lottie Animations:** Used for enhancing UI with animations without impacting performance.
 
-```
-lib/
-│── core/                # Common utilities, error handling, and constants
-│── resources/           # Themes, colors, media assets
-│── service/             # Dependency injection setup
-│── utils/               # Helper functions, constants
-│── src/                 # Feature-based modules
-│   ├── onboarding/
-│   │   ├── presentation/view/
-│── spacex/
-│   ├── data/            # Data layer: API calls, repository implementation
-│   ├── domain/          # Domain layer: Entities, use cases, repository interfaces
-│   ├── presentation/    # UI layer: Screens, widgets, state management
-│       ├── cubit/       # Bloc state management
-│       ├── view/        # UI views
-│── main.dart            # Entry point of the app
-```
+## Assumptions and Trade-offs
 
-## License
+- **Assumption:** The app fetches SpaceX data from an external API and assumes the API structure will remain stable.
+- **Trade-off:** Used `flutter_bloc` for state management instead of Riverpod or Provider due to better maintainability in large projects.
+- **Assumption:** The app primarily targets mobile platforms (iOS & Android) and does not yet support web or desktop.
+- **Trade-off:** Used `http` for API requests to keep dependencies minimal and avoid additional configuration.
 
-This project is licensed under the MIT License. Feel free to use and modify it.
