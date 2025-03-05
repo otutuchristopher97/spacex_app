@@ -10,6 +10,7 @@ A Flutter application following Clean Architecture principles to interact with S
 - [Installation](#installation)
 - [Technical Choices](#technical-choices)
 - [Assumptions and Trade-offs](#assumptions-and-trade-offs)
+- [Test](#test)
 
 ## Introduction
 
@@ -62,3 +63,12 @@ This project follows Clean Architecture principles:
 - **Assumption:** The app primarily targets mobile platforms (iOS & Android) and does not yet support web or desktop.
 - **Trade-off:** Used `http` for API requests to keep dependencies minimal and avoid additional configuration.
 
+## Test
+
+We have written tests to ensure the functionality of the application, focusing on data fetching, repository implementation, and API failure handling.
+
+### Running Tests
+To execute the tests, run the following command:
+```sh
+flutter test
+```
